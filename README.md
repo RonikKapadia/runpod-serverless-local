@@ -16,8 +16,6 @@ The official RunPod SDK's `run()` simply executes your handler and waits. **This
 - **🏗️ Hot Reload** — Build handlers from source on startup for rapid development
 - **📡 API Compatible** — Drop-in replacement for RunPod's `/run`, `/runsync`, `/status`, `/cancel`, `/health` endpoints
 
----
-
 ## 🚀 Quick Start
 
 ### 1. Build the Server Image
@@ -63,8 +61,6 @@ curl -X POST http://localhost:8000/my-handler/runsync \
   -d '{"input": {"prompt": "Hello, World!"}}'
 ```
 
----
-
 ## 📋 How It Works
 
 ```
@@ -80,8 +76,6 @@ curl -X POST http://localhost:8000/my-handler/runsync \
 ```
 
 Workers show up in Docker Desktop with names like `my-handler-1`, `my-handler-2`, making it easy to monitor logs and debug issues.
-
----
 
 ## ⚙️ Configuration
 
@@ -165,8 +159,6 @@ Endpoints are configured via the `ENDPOINTS` environment variable as a JSON arra
 
 > ⚠️ **Warning**: The `build` option rebuilds the image **on every server startup**. This can be slow for large images. Use pre-built images (`image` field) for faster startup in production-like environments.
 
----
-
 ## 🔧 Local Development with Volume Mounts
 
 For true hot-reload development (code changes without rebuild), you need to mount your handler code through the serverless container to the workers:
@@ -203,8 +195,6 @@ How it works:
 
 > 📝 **Note**: This is a bit complex due to the "container creating containers" pattern. The path in `volumes` must match where the serverless container sees the code, not your host path.
 
----
-
 ## 📡 API Reference
 
 | Endpoint                         | Method | Description                                 |
@@ -239,8 +229,6 @@ curl -X POST http://localhost:8000/my-handler/runsync \
 # → {"id": "abc-123", "status": "COMPLETED", "output": "...", "delay_time": 1200}
 ```
 
----
-
 ## 🐍 Using with RunPod Python SDK
 
 ```python
@@ -259,8 +247,6 @@ job = endpoint.run({"prompt": "Hello, World!"})
 output = job.output(timeout=60)
 print(output)
 ```
-
----
 
 ## 🏗️ Creating a Handler
 
@@ -290,8 +276,6 @@ COPY handler.py .
 CMD ["python", "-u", "handler.py"]
 ```
 
----
-
 ## 🧹 Known Issues
 
 ### Worker Containers on Shutdown
@@ -302,8 +286,6 @@ If you need to clean up manually:
 ```bash
 docker ps -a --filter "label=runpod_local_endpoint_id" -q | xargs docker rm -f
 ```
-
----
 
 ## 🐛 Troubleshooting
 
@@ -319,8 +301,6 @@ docker ps -a --filter "label=runpod_local_endpoint_id" -q | xargs docker rm -f
 - Enable GPU in Docker Desktop settings
 - Install NVIDIA Container Toolkit on Linux
 - Set `gpu: true` in endpoint config
-
----
 
 ## 📝 License
 
