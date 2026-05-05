@@ -1,5 +1,7 @@
 # 🚀 RunPod Serverless Local
 
+![runpod](logo.png)
+
 Run your RunPod Serverless handlers locally with realistic worker management, isolated Docker containers, and dynamic scaling.
 
 ## ✨ What Makes This Different?
